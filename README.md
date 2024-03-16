@@ -1,6 +1,9 @@
-# RS Learning System
+# Online Learning Platform Django 
 
 A learning management and online assessment system for academic education.
+
+###### Due to the large file size, the demo video exceeds Github's upload limit. Please access the video using the following link
+[![Alt text](https://img.youtube.com/vi/7WFa6E2Y3rdS3eRf/0.jpg)](https://youtu.be/5QumgqWzc60?si=7WFa6E2Y3rdS3eRf)
 
 ## Features
 
@@ -9,35 +12,30 @@ A learning management and online assessment system for academic education.
 - Students can enroll in the courses using the access key, see the course content of the enrolled courses, participate in assessments and see their results in detail.
 - Discussion section for both teacher and student.
 
-## Relational Schema
+## Technologies Used
 
+- **DJango**
+- **HTML**
+- **CSS**
+- **JavaScript**
+- **Bootstrap**
+- **Froala Editor**
 
-## Tech Stack
-
-1. Django 4.0.4
-2. Bootstrap 5.0.2
-3. jQuery 3.6.0
-4. Chart.js v3.9.1
-5. Animate.css 4.1.1
-
-## UI
-
-
-## Run Locally
+## Installation
 
 1. Clone the project
 
 ```bash
-git clone https://github.com/nz-m/eLMS-SWE.git
+git clone https://github.com/Rohitashsingh89/Online-Learing-Platfrom-Django.git
 ```
 
 2. Go to the project directory
 
 ```bash
-cd eLMS-SWE
+cd Online-Learing-Platfrom-Django
 ```
 
-3. Create a virtual environment and activate it (Windows)
+3. Create a virtual environment and activate it - windows (Optional)
 
 ```bash
 python -m venv env
@@ -85,7 +83,18 @@ Now the project should be running on http://127.0.0.1:8000/
 
 Login as admin and add some courses, teacher and students.
 
+We greatly appreciate your support! Your contribution helps us maintain this project and ensures its continuous improvement.
+Thank you for supporting open-source software! 🙌
+
+
+## Usage
+
+1. Register for an account or log in if you already have one.
+2. Create a new chat room or join an existing one.
+3. Start Learning by getting enrolling into the courses.
+4. Log out when you're done.
 
 ## License
 
-[The MIT License (MIT)](https://github.com/nz-m/eLMS-SWE/blob/main/LICENCE)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+
