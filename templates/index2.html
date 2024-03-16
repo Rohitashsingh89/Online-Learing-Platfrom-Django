@@ -1,0 +1,873 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>stackmern</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="{% static 'styles/style-home.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+
+
+</head>
+
+<body data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0"><noscript><strong>We're sorry but
+            stackmern doesn't work properly without JavaScript enabled. Please enable it to
+            continue.</strong></noscript>
+    <div id="app">
+        <div data-v-7930edba="" data-v-2a03d6e4="" id="layoutDefault">
+            <div data-v-7930edba="" id="layoutDefault_content">
+                <main data-v-7930edba="">
+
+                    <!-- Navbar Starts -->
+                    <nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-mod">
+                        <div class="container-fluid p-2">
+                            <a class="navbar-brand fw-bold fs-5 px-2 py-1" href="/" 
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Access admin panel">RS
+                                Learning</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                  </button>
+                            <div class="collapse navbar-collapse" id="navbarColor01">
+                                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link active fw-bold" aria-current="page"
+                                            href="{% block courses %}{% endblock courses %}" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Course home page">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active fw-bold" aria-current="page" href="/departments"
+                                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            title="Course home page">Departments</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active fw-bold" href="{% block allCourses %}{% endblock %}"
+                                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            title="Show all courses">Courses</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active fw-bold" href="{% url 'std_logout' %}"
+                                            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Log out">Log out</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active fw-bold"
+                                            href="{% block profile %}{% endblock profile %}" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Check your profile">{% block user %}{% endblock %}</a>
+                                    </li>
+                                </ul>
+                                <form class="d-flex" action=" {% url 'search' %}" method="GET">
+                                    <input id="searchIn" class="form-control me-2 mr-2 searchbar" type="search"
+                                        placeholder="Search courses" aria-label="Search" name="q">
+                                    <button id="searchBtn" class="btn btn-outline-dark" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar Ends -->
+
+                    <header class="page-header bg-gradient-primary-to-secondary page-header-dark">
+                        <div class="page-header-content">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6" data-aos="fade-up">
+                                        <h1 class="page-header-title text-dark">Build your next project faster with stackmern
+                                        </h1>
+                                        <p class="page-header-text mb-5 text-light">Welcome to stackmern, An Ultimate platform. Upskill your career and advance as a leader in India and beyond.</p>
+                                        <a href="https://user-images.githubusercontent.com/93479842/271357723-221fecac-6b13-491e-bed8-24db1e647af8.png"
+                                            class="btn btn-teal btn-marketing rounded-pill lift lift-sm">Explore all Courses
+                                            <svg aria-hidden="true" focusable="false" data-prefix="fas"
+                                                data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 448 512"
+                                                class="ml-1 svg-inline--fa fa-arrow-right fa-w-14">
+                                                <path fill="currentColor"
+                                                    d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z">
+                                                </path>
+                                            </svg>
+                                        </a>
+                                        
+                                    </div>
+                                    <div class="col-lg-6 d-none d-lg-block" data-aos="fade-up" data-aos-delay="50">
+                                        <img src="https://user-images.githubusercontent.com/93479842/271357723-221fecac-6b13-491e-bed8-24db1e647af8.png"
+                                            class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-rounded text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34"
+                                preserveAspectRatio="none" fill="currentColor">
+                                <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0">
+                                </path>
+                            </svg>
+                        </div>
+                    </header>
+                 
+                    <section class="py-10 bg-white">
+                        <div class="container">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h2 class="mb-0">Featured Listings</h2>
+                                <a href="javascript:void(0);"
+                                    class="btn btn-sm btn-primary d-inline-flex align-items-center">See more
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="ml-1 feather feather-arrow-right">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 mb-5 mb-lg-0">
+                                    <div class="card lift h-100">
+                                        <div class="card-flag card-flag-dark card-flag-top-right">Listed 1 month</div>
+                                        <img src="https://user-images.githubusercontent.com/93479842/213844150-e2773b51-f30a-4b50-a9a9-75b5b0a6960b.png" alt="..."
+                                            class="card-img-top" style="height: 200px;">
+                                        <div class="card-body">
+                                            <p class="mb-0 w-100 font-weight-600 text-dark">Web Development BootcampVoted the most desirable county in the region, discover what Piscard has to offer!
+
+                                            </p>
+                                            
+                                            <div class="small text-gray-500">Rohitash Singh</div>
+                                            <div class="small text-gray-800 font-weight-200" style="font-size: 10px;">
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            
+                                            <h3 class="mb-0 font-weight-600 text-dark price">₹409,000</h3>
+                                        </div>
+                                        <div
+                                            class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                                            <div class="small text-gray-500">Enroll </div>
+                                            <div class="small text-gray-500 lh-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-arrow-right">
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-5 mb-lg-0">
+                                    <div class="card lift h-100">
+                                        <div class="card-flag card-flag-dark card-flag-top-right">Listed 6 days</div>
+                                        <img src="https://user-images.githubusercontent.com/93479842/213845813-670291b9-96ea-4377-84af-d0ddc6076822.png" alt="..."
+                                            class="card-img-top" style="height: 200px;">
+                                        <div class="card-body">
+                                            <p class="mb-0 w-100 font-weight-600 text-dark">Web Development BootcampVoted the most desirable county in the region, discover what Piscard has to offer!
+
+                                            </p>
+                                            
+                                            <div class="small text-gray-500">Rohitash Singh</div>
+                                            <div class="small text-gray-800 font-weight-200" style="font-size: 10px;">
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            
+                                            <h3 class="mb-0 font-weight-600 text-dark price">₹409,000</h3>
+                                        </div>
+                                        <div
+                                            class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                                            <div class="small text-gray-500">Enroll </div>
+                                            <div class="small text-gray-500 lh-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-arrow-right">
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card lift h-100">
+                                        <div class="card-flag card-flag-dark card-flag-top-right">Listed 2 weeks</div>
+                                        <img src="https://user-images.githubusercontent.com/93479842/213843951-dc152565-75f4-4970-b139-01bf61f6c647.png" alt="..."
+                                            class="card-img-top" style="height: 200px;">
+                                        <div class="card-body">
+                                            <p class="mb-0 w-100 font-weight-600 text-dark">Web Development BootcampVoted the most desirable county in the region, discover what Piscard has to offer!
+
+                                            </p>
+                                            
+                                            <div class="small text-gray-500">Rohitash Singh</div>
+                                            <div class="small text-gray-800 font-weight-200" style="font-size: 10px;">
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            
+                                            <h3 class="mb-0 font-weight-600 text-dark price">$409,000</h3>
+                                        </div>
+                                        <div
+                                            class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                                            <div class="small text-gray-500">Enroll </div>
+                                            <div class="small text-gray-500 lh-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-arrow-right">
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <hr class="my-0">
+
+                    <section class="py-10 bg-white">
+                        <div class="container">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h2 class="mb-0">Newest Listings</h2>
+                                <a href="javascript:void(0);"
+                                    class="btn btn-sm btn-primary d-inline-flex align-items-center">See more
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="ml-1 feather feather-arrow-right">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 mb-5 mb-lg-0">
+                                    <div class="card lift h-100">
+                                        <div class="card-flag card-flag-dark card-flag-top-right">Listed 3 days</div>
+                                        <img src="https://user-images.githubusercontent.com/93479842/213848000-7efdb016-81c2-45cd-ac1d-d034fa6448f2.png" alt="..."
+                                            class="card-img-top" style="height: 200px;">
+                                        <div class="card-body">
+                                            <p class="mb-0 w-100 font-weight-600 text-dark">Web Development BootcampVoted the most desirable county in the region, discover what Piscard has to offer!
+
+                                            </p>
+                                            
+                                            <div class="small text-gray-500">Rohitash Singh</div>
+                                            <div class="small text-gray-800 font-weight-200" style="font-size: 10px;">
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            
+                                            <h3 class="mb-0 font-weight-600 text-dark price">$409,000</h3>
+                                        </div>
+                                        <div
+                                            class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                                            <div class="small text-gray-500">Enroll </div>
+                                            <div class="small text-gray-500 lh-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-arrow-right">
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-5 mb-lg-0">
+                                    <div class="card lift h-100">
+                                        <div class="card-flag card-flag-dark card-flag-top-right">Listed 5 days</div>
+                                        <img src="https://user-images.githubusercontent.com/93479842/213847983-b5d5d512-bfae-413c-aa44-dc42ceda5cab.png" alt="..."
+                                            class="card-img-top" style="height: 200px;">
+                                        <div class="card-body">
+                                            <p class="mb-0 w-100 font-weight-600 text-dark">Web Development BootcampVoted the most desirable county in the region, discover what Piscard has to offer!
+
+                                            </p>
+                                            
+                                            <div class="small text-gray-500">Rohitash Singh</div>
+                                            <div class="small text-gray-800 font-weight-200" style="font-size: 10px;">
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            
+                                            <h3 class="mb-0 font-weight-600 text-dark price">$409,000</h3>
+                                        </div>
+                                        <div
+                                            class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                                            <div class="small text-gray-500">Enroll </div>
+                                            <div class="small text-gray-500 lh-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-arrow-right">
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card lift h-100">
+                                        <div class="card-flag card-flag-dark card-flag-top-right">Listed 1 week</div>
+                                        <img src="https://user-images.githubusercontent.com/93479842/213847958-e4b1d227-9717-4272-9728-ad8f8c39e015.png" alt="..."
+                                            class="card-img-top" style="height: 200px;">
+                                        <div class="card-body">
+                                            <p class="mb-0 w-100 font-weight-600 text-dark">Web Development BootcampVoted the most desirable county in the region, discover what Piscard has to offer!
+
+                                            </p>
+                                            
+                                            <div class="small text-gray-500">Rohitash Singh</div>
+                                            <div class="small text-gray-800 font-weight-200" style="font-size: 10px;">
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star fill"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            
+                                            <h3 class="mb-0 font-weight-600 text-dark price">$409,000</h3>
+                                        </div>
+                                        <div
+                                            class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                                            <div class="small text-gray-500">Enroll </div>
+                                            <div class="small text-gray-500 lh-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-arrow-right">
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-rounded text-light">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34"
+                                preserveAspectRatio="none" fill="currentColor">
+                                <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0">
+                                </path>
+                            </svg>
+                        </div>
+                    </section>
+
+
+                    <section class="py-10 bg-light">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6 text-center mb-5">
+                                    <h2>Top Categories</h2>
+                                    <p class="lead mb-0">Voted the most desirable county in the region, discover what
+                                        Piscard has to offer!</p>
+                                </div>
+                            </div>
+                            <h2 class="mb-4">Browse Categories</h2>
+                            <div class="row">
+                                <!-- <div class="col-lg-3 col-md-6 mb-5"><a href="javascript:void(0);"
+                                        class="card lift border-bottom-lg border-red">
+                                        <div class="card-body text-center">
+                                            <div class="icon-stack icon-stack-xl bg-red text-white mb-2"><svg
+                                                    aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="car" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 512 512" class="svg-inline--fa fa-car fa-w-16">
+                                                    <path fill="currentColor"
+                                                        d="M499.99 176h-59.87l-16.64-41.6C406.38 91.63 365.57 64 319.5 64h-127c-46.06 0-86.88 27.63-103.99 70.4L71.87 176H12.01C4.2 176-1.53 183.34.37 190.91l6 24C7.7 220.25 12.5 224 18.01 224h20.07C24.65 235.73 16 252.78 16 272v48c0 16.12 6.16 30.67 16 41.93V416c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32v-32h256v32c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32v-54.07c9.84-11.25 16-25.8 16-41.93v-48c0-19.22-8.65-36.27-22.07-48H494c5.51 0 10.31-3.75 11.64-9.09l6-24c1.89-7.57-3.84-14.91-11.65-14.91zm-352.06-17.83c7.29-18.22 24.94-30.17 44.57-30.17h127c19.63 0 37.28 11.95 44.57 30.17L384 208H128l19.93-49.83zM96 319.8c-19.2 0-32-12.76-32-31.9S76.8 256 96 256s48 28.71 48 47.85-28.8 15.95-48 15.95zm320 0c-19.2 0-48 3.19-48-15.95S396.8 256 416 256s32 12.76 32 31.9-12.8 31.9-32 31.9z"
+                                                        class=""></path>
+                                                </svg></div>
+                                            <div class="small text-gray-600">
+                                            </div>
+                                        </div>
+                                    </a></div> -->
+                                <!-- <div class="col-lg-3 col-md-6 mb-5"><a href="javascript:void(0);"
+                                        class="card lift border-bottom-lg border-orange">
+                                        <div class="card-body text-center">
+                                            <div class="icon-stack icon-stack-xl bg-orange text-white mb-2"><svg
+                                                    aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 576 512" class="svg-inline--fa fa-home fa-w-18">
+                                                    <path fill="currentColor"
+                                                        d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+                                                        class=""></path>
+                                                </svg>
+                                            </div>
+                                            <div class="small text-gray-600">
+                                                Housing</div>
+                                        </div>
+                                    </a></div> -->
+                                <div class="col-lg-3 col-md-6 mb-5"><a href="javascript:void(0);"
+                                        class="card lift border-bottom-lg border-yellow">
+                                        <div class="card-body text-center">
+                                            <div class="icon-stack icon-stack-xl bg-yellow text-white mb-2"><svg
+                                                    aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="gift" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 512 512" class="svg-inline--fa fa-gift fa-w-16">
+                                                    <path fill="currentColor"
+                                                        d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z"
+                                                        class=""></path>
+                                                </svg></div>
+                                            <div class="small text-gray-600">Sales
+                                            </div>
+                                        </div>
+                                    </a></div>
+                                <div class="col-lg-3 col-md-6 mb-5"><a href="javascript:void(0);"
+                                        class="card lift border-bottom-lg border-green">
+                                        <div class="card-body text-center">
+                                            <div class="icon-stack icon-stack-xl bg-green text-white mb-2"><svg
+                                                    aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="mobile-alt" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 320 512" class="svg-inline--fa fa-mobile-alt fa-w-10">
+                                                    <path fill="currentColor"
+                                                        d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"
+                                                        class=""></path>
+                                                </svg></div>
+                                            <div class="small text-gray-600">Development
+                                            </div>
+                                        </div>
+                                    </a></div>
+                                <!-- <div class="col-lg-3 col-md-6 mb-5 mb-lg-0"><a href="javascript:void(0);"
+                                        class="card lift border-bottom-lg border-cyan">
+                                        <div class="card-body text-center">
+                                            <div class="icon-stack icon-stack-xl bg-cyan text-white mb-2"><svg
+                                                    aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="couch" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 640 512" class="svg-inline--fa fa-couch fa-w-20">
+                                                    <path fill="currentColor"
+                                                        d="M160 224v64h320v-64c0-35.3 28.7-64 64-64h32c0-53-43-96-96-96H160c-53 0-96 43-96 96h32c35.3 0 64 28.7 64 64zm416-32h-32c-17.7 0-32 14.3-32 32v96H128v-96c0-17.7-14.3-32-32-32H64c-35.3 0-64 28.7-64 64 0 23.6 13 44 32 55.1V432c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16v-16h384v16c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16V311.1c19-11.1 32-31.5 32-55.1 0-35.3-28.7-64-64-64z"
+                                                        class=""></path>
+                                                </svg></div>
+                                            <div class="small text-gray-600">
+                                                Furniture</div>
+                                        </div>
+                                    </a></div> -->
+                                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0"><a href="javascript:void(0);"
+                                        class="card lift border-bottom-lg border-blue">
+                                        <div class="card-body text-center">
+                                            <div class="icon-stack icon-stack-xl bg-blue text-white mb-2"><svg
+                                                    aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="briefcase" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 512 512" class="svg-inline--fa fa-briefcase fa-w-16">
+                                                    <path fill="currentColor"
+                                                        d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"
+                                                        class=""></path>
+                                                </svg></div>
+                                            <div class="small text-gray-600">Marketing
+                                            </div>
+                                        </div>
+                                    </a></div>
+                                <!-- <div class="col-lg-3 col-md-6 mb-5 mb-lg-0"><a href="javascript:void(0);"
+                                        class="card lift border-bottom-lg border-purple">
+                                        <div class="card-body text-center">
+                                            <div class="icon-stack icon-stack-xl bg-purple text-white mb-2"><svg
+                                                    aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="motorcycle" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 640 512" class="svg-inline--fa fa-motorcycle fa-w-20">
+                                                    <path fill="currentColor"
+                                                        d="M512.9 192c-14.9-.1-29.1 2.3-42.4 6.9L437.6 144H520c13.3 0 24-10.7 24-24V88c0-13.3-10.7-24-24-24h-45.3c-6.8 0-13.3 2.9-17.8 7.9l-37.5 41.7-22.8-38C392.2 68.4 384.4 64 376 64h-80c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h66.4l19.2 32H227.9c-17.7-23.1-44.9-40-99.9-40H72.5C59 104 47.7 115 48 128.5c.2 13 10.9 23.5 24 23.5h56c24.5 0 38.7 10.9 47.8 24.8l-11.3 20.5c-13-3.9-26.9-5.7-41.3-5.2C55.9 194.5 1.6 249.6 0 317c-1.6 72.1 56.3 131 128 131 59.6 0 109.7-40.8 124-96h84.2c13.7 0 24.6-11.4 24-25.1-2.1-47.1 17.5-93.7 56.2-125l12.5 20.8c-27.6 23.7-45.1 58.9-44.8 98.2.5 69.6 57.2 126.5 126.8 127.1 71.6.7 129.8-57.5 129.2-129.1-.7-69.6-57.6-126.4-127.2-126.9zM128 400c-44.1 0-80-35.9-80-80s35.9-80 80-80c4.2 0 8.4.3 12.5 1L99 316.4c-8.8 16 2.8 35.6 21 35.6h81.3c-12.4 28.2-40.6 48-73.3 48zm463.9-75.6c-2.2 40.6-35 73.4-75.5 75.5-46.1 2.5-84.4-34.3-84.4-79.9 0-21.4 8.4-40.8 22.1-55.1l49.4 82.4c4.5 7.6 14.4 10 22 5.5l13.7-8.2c7.6-4.5 10-14.4 5.5-22l-48.6-80.9c5.2-1.1 10.5-1.6 15.9-1.6 45.6-.1 82.3 38.2 79.9 84.3z"
+                                                        class=""></path>
+                                                </svg></div>
+                                            <div class="small text-gray-600">
+                                                Leisure</div>
+                                        </div>
+                                    </a></div> -->
+                                <div class="col-lg-3 col-md-6"><a href="javascript:void(0);"
+                                        class="card lift border-bottom-lg border-pink">
+                                        <div class="card-body text-center">
+                                            <div class="icon-stack icon-stack-xl bg-pink text-white mb-2"><svg
+                                                    aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="shopping-cart" role="img"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                                    class="svg-inline--fa fa-shopping-cart fa-w-18">
+                                                    <path fill="currentColor"
+                                                        d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"
+                                                        class=""></path>
+                                                </svg></div>
+                                            <div class="small text-gray-600">Business Development
+                                            </div>
+                                        </div>
+                                    </a></div>
+                            </div>
+                        </div>
+                        <div class="svg-border-rounded text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34"
+                                preserveAspectRatio="none" fill="currentColor">
+                                <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0">
+                                </path>
+                            </svg>
+                        </div>
+                    </section>
+
+                    <section class="pt-10 bg-white">
+                        <div class="container">
+                            <div class="row mb-10 shadow">
+                                <div class="col-lg-12 mb-5 mb-lg-0 border-end">
+
+                                    <div id="carouselExampleIndicators" class="carousel slide swiper py-4"
+                                        data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                                                class="active"></li>
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                        </ol>
+                                        <div class="carousel-inner p-5">
+                                            <div class="carousel-item active">
+                                                <div class="testimonial testimonial-data">
+                                                    <img class="d-block"
+                                                        src="https://source.unsplash.com/random/800x800"
+                                                        alt="First slide" style="width: 100px; height: 100px; border-radius: 50%;">
+                                                    <div class="pl-lg-4">
+                                                        <p>"I had an amazing experience with this service. The team was
+                                                            highly professional and efficient. I would highly recommend
+                                                            it to everyone!"</p>
+                                                        <p class="testimonial-author">- John Doe</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="testimonial testimonial-data">
+                                                    <img class="d-block"
+                                                        src="https://source.unsplash.com/random/800x800"
+                                                        alt="First slide" style="width: 100px; height: 100px; border-radius: 50%;">
+                                                    <div class="pl-lg-4">
+                                                    <p>"Outstanding service! The quality of exceeded my
+                                                        expectations. I will definitely use their services again in the
+                                                        future."</p>
+                                                    <p class="testimonial-author">- Jane Smith</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="testimonial testimonial-data">
+                                                    <img class="d-block"
+                                                        src="https://source.unsplash.com/random/800x800"
+                                                        alt="First slide" style="width: 100px; height: 100px; border-radius: 50%;">
+                                                    <div class="pl-lg-4">
+                                                    <p>"I am extremely satisfied with the results. The team's attention
+                                                        to detail and dedication are truly commendable."</p>
+                                                    <p class="testimonial-author">- Michael Johnson</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators"
+                                                role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon"
+                                                    aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators"
+                                                role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon"
+                                                    aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="py-10 bg-light" data-v-7930edba="">
+                        <div class="container">
+                            <div class="row text-center">
+                                <div class="col-lg-4 mb-5 mb-lg-0">
+                                    <div
+                                        class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="feather feather-layers">
+                                            <polygon
+                                                points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                            <polyline points="2 17 12 22 22 17">
+                                            </polyline>
+                                            <polyline points="2 12 12 17 22 12">
+                                            </polyline>
+                                        </svg></div>
+                                    <h3>
+                                        1000+ Happy learners</h3>
+                                    <p class="mb-0">Our modular, block-based build
+                                        system makes building your next project fast and easy!</p>
+                                </div>
+                                <div class="col-lg-4 mb-5 mb-lg-0">
+                                    <div
+                                        class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="feather feather-smartphone">
+                                            <rect x="5" y="2" width="14"
+                                                height="20" rx="2" ry="2"></rect>
+                                            <line x1="12" y1="18" x2="12.01"
+                                                y2="18"></line>
+                                        </svg></div>
+                                    <h3>100+ Courses</h3>
+                                    <p class="mb-0">This UI Kit is build
+                                        mobile-first, meaning it is will function beautifully on any device!</p>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div
+                                        class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="feather feather-code">
+                                            <polyline points="16 18 22 12 16 6">
+                                            </polyline>
+                                            <polyline points="8 6 2 12 8 18">
+                                            </polyline>
+                                        </svg></div>
+                                    <h3>Complete Courses</h3>
+                                    <p class="mb-0">All of the layouts, page
+                                        sections, components, and utilities are fully covered in this products docs.</p>
+                                    </div>
+                                </div>
+                                <span>
+                                    <div class="svg-border-rounded text-light"><svg
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34"
+                                            preserveAspectRatio="none" fill="white">
+                                            <path
+                                                d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0">
+                                            </path>
+                                        </svg></div>
+                                </span>
+                        </div>
+                    </section>
+                    
+                    <section class="py-10 bg-white">
+                        <div class="container">
+                            <!-- <div class="row mb-10">
+                                <div class="col-lg-6 mb-5 mb-lg-0 border-end">
+                                    <div class="testimonial p-lg-5">
+                                        <div class="avatar avatar-xl mb-3">
+                                            <img src="https://source.unsplash.com/QAB-WJcbgJk/96x96" class="avatar-img"
+                                                alt="Avatar 1">
+                                        </div>
+                                        <p class="testimonial-quote text-primary">
+                                            "Working with the realtors has been a true joy. They helped us purchase our
+                                            home and made the whole process so easy!"
+                                        </p>
+                                        <div class="testimonial-name">Valerie Luna</div>
+                                        <div class="testimonial-position">Jefferson, GA</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="testimonial p-lg-5">
+                                        <div class="avatar avatar-xl mb-3">
+                                            <img src="https://source.unsplash.com/MTZTGvDsHFY/96x96" class="avatar-img"
+                                                alt="Avatar 2">
+                                        </div>
+                                        <p class="testimonial-quote text-primary">
+                                            "Selling a home has never been so easy. The real estate group helped me
+                                            prepare my home, list it, and sell it, all within a few weeks!"
+                                        </p>
+                                        <div class="testimonial-name">Destrian Barnes</div>
+                                        <div class="testimonial-position">Fayetville, NC</div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-lg-6 mb-5 mb-lg-0">
+                                    <a href="javascript:void(0);" class="card text-decoration-none h-100 lift">
+                                        <div class="card-body py-5">
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="icon-stack icon-stack-xl bg-primary text-white flex-shrink-0">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-home">
+                                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                                    </svg>
+                                                </div>
+                                                <div class="ml-4">
+                                                    <h5 class="text-primary">Enrolled in Cources</h5>
+                                                    <p class="card-text text-gray-600">Looking forward to enrolled in
+                                                        your Favorite courses.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a href="javascript:void(0);" class="card text-decoration-none h-100 lift">
+                                        <div class="card-body py-5">
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="icon-stack icon-stack-xl bg-secondary text-white flex-shrink-0">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-dollar-sign">
+                                                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                                <div class="ml-4">
+                                                    <h5 class="text-secondary">Create your Course</h5>
+                                                    <p class="card-text text-gray-600">Instructors from around the world
+                                                        teach 1000+ of learners on RS Learning Platform.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <span>
+                            <div class="svg-border-rounded text-light"><svg
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34"
+                                    preserveAspectRatio="none" fill="currentColor">
+                                    <path
+                                        d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0">
+                                    </path>
+                                </svg></div>
+                        </span>
+                    </section>
+
+                </main>
+            </div>
+
+            <div id="layoutDefault_footer">
+                <footer id="layoutDefault_footer" class="footer pt-10 pb-5 mt-auto bg-light footer-light">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">RS Learning</div>
+                                <div class="mb-3">An Ultimate place for study</div>
+                                <div class="icon-list-social mb-5">
+                                    <a href="javascript:void(0);" class="icon-list-social-link">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="javascript:void(0);" class="icon-list-social-link">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                    <a href="javascript:void(0);" class="icon-list-social-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="javascript:void(0);" class="icon-list-social-link">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                                        <div class="text-uppercase-expanded text-xs mb-4">Product</div>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><a href="javascript:void(0);">Landing</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Pages</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Sections</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Documentation</a></li>
+                                            <li><a href="javascript:void(0);">Changelog</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                                        <div class="text-uppercase-expanded text-xs mb-4">Technical</div>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><a href="javascript:void(0);">Documentation</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Changelog</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Theme Customizer</a></li>
+                                            <li><a href="javascript:void(0);">UI Kit</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                                        <div class="text-uppercase-expanded text-xs mb-4">Includes</div>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><a href="javascript:void(0);">Utilities</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Components</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Layouts</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Code Samples</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Products</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Affiliates</a></li>
+                                            <li><a href="javascript:void(0);">Updates</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="text-uppercase-expanded text-xs mb-4">Legal</div>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><a href="javascript:void(0);">Privacy Policy</a></li>
+                                            <li class="mb-2"><a href="javascript:void(0);">Terms and Conditions</a></li>
+                                            <li><a href="javascript:void(0);">License</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-5">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 small">Copyright © RS Learning 2023</div>
+                            <div class="col-md-6 text-md-right small">
+                                <a href="javascript:void(0);">Privacy Policy · </a>
+                                <a href="javascript:void(0);">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        // Add a scroll event listener
+        $(window).scroll(function() {
+            // Check the scroll position
+            if ($(this).scrollTop() > 50) { 
+                $('.navbar-mod').addClass('scrolled shadow');
+            } else {
+                $('.navbar-mod').removeClass('scrolled shadow');
+            }
+        });
+    });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+.testimonial-data {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .testimonial-data {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  
+}
+/* Custom CSS to center and style carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px; 
+  height: 30px; 
+  /* background-color: rgb(232, 232, 237); */
+  color: white !important;
+  font-size: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: transparent;
+  color: white;
+}
+
+.carousel-control-prev-icon::before {
+  content: '\2039'; 
+}
+
+.carousel-control-next-icon::before {
+  content: '\203A'; 
+}
+
+/* Change the color of the carousel controls */
+.carousel-control-prev {
+  left: -10px; 
+}
+
+.carousel-control-next {
+  right: -10px;
+}

@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% block title %}Dashboard | RS Learning {% endblock title %}
+{% block profile %}
+{% url 'profile' student.student_id %}
+{% endblock %}
+{% block user %}
+{{student.name}}
+{% endblock user %}
+{% block allCourses %}
+{% url 'courses' %}
+{% endblock%}
+{% block courses %}
+{% url 'myCourses' %}
+{% endblock %}
+{% block content %}
+<div>
+   <!--navigation links-->
+   <div class="container">
+      <div class="container shadow-sm">
+         <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
+            <ol class="breadcrumb p-3">
+               <li class="breadcrumb-item active" aria-current="page">My courses</li>
+            </ol>
+
+         </nav>
+      </div>
+   </div>
+   {% if courses %}
+   <!-- Course container -->
+   <div class="container">
+      <div class="row gy-4 mx-auto">
+         {% for courses in courses %}
+         <!-- individual course starts -->
+         <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="card">
+               <a href="{% url 'course' courses.code %}">
+                  <img src="{{ courses.image.url }}" alt="..." class="card-img-top" style="height: 200px;">
+               </a>
+               <div class="card-body p-2">
+                  <p class="mb-0 w-100 font-weight-600 text-dark fw-bold">{{courses.name}}</p>
+                  <p class="mb-0 w-100 font-weight-200 text-dark">{{courses.faculty}}</p>
+                  <p class="mb-0 w-100 font-weight-600 text-dark">₹{{courses.price}}</p>
+               </div>
+               
+               <a href="{% url 'course' courses.code %}" class="text-dark">
+                  <div class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                     <div class="small text-gray-500">{{studentCount|get_item:courses.code}} + Learners Already
+                        Enrolled </div>
+                     <div class="small text-gray-500 lh-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"
+                           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                           stroke-linejoin="round" class="feather feather-arrow-right">
+                           <line x1="5" y1="12" x2="19" y2="12"></line>
+                           <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                     </div>
+                  </div>
+               </a>
+            </div>
+         </div>
+         <!-- individual course ends -->
+         {% endfor %}
+         <!-- Course container ends -->
+      </div>
+   </div>
+   {% else %}
+   <div class="text-center fs-5 text-secondary">
+      <p>You are not enrolled in any courses</p>
+   </div>
+   {% endif %}
+</div>
+</div>
+{% endblock %}

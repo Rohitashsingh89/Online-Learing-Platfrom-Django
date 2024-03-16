@@ -1,0 +1,220 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Materials | {{ course.name }} | RS Learning {% endblock title %}
+{% block profile %}
+{% url 'profile' faculty.faculty_id %}
+{% endblock %}
+{% block user %}
+{{faculty.name}}
+{% endblock user %}
+{% block courses %}
+{% url 'facultyCourses' %}
+{% endblock courses %}
+{% block allCourses %}
+{% url 'courses' %}
+{% endblock %}
+{% block content %}
+<div>
+    <style>
+        .custom-text p{
+            padding-bottom: 0rem;
+            margin-bottom: 0rem;
+        }
+    </style>
+    <!-- navigation links -->
+    <div class="container shadow-sm">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
+            <ol class="breadcrumb p-3">
+                <li class="breadcrumb-item fw-bold"><a style="color: rgb(10, 10, 48)"
+                        href="{% url 'facultyCourses' %}">My
+                        Courses</a>
+                </li>
+                <li class="breadcrumb-item fw-bold"><a style="color: rgb(10, 10, 48)"
+                        href="{% url 'faculty' course.code %}">{{ course.name }}</a></li>
+                <li class="breadcrumb-item active animate__animated animate__backInRight" aria-current="page">Materials
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <!-- navigation links end -->
+    <div class="container d-flex flex-wrap flex-column">
+        <!-- course name starts -->
+        <div class="course-section p-3 m-3 shadow-sm d-flex justify-content-center">
+            <div class="fw-bold fs-5 course_name">{{course.department}}-{{course.code}} : {{course.name}}</div>
+        </div>
+        <!-- course name ends -->
+        <!-- material section starts -->
+        <div class="course-section p-3 m-3 shadow">
+            <div class="d-flex flex-row justify-content-between edit">
+                <h4 class="fw-bold" style="color: rgb(10, 10, 48);"><img src="{% static 'images/icon/folder.png' %}"
+                        alt="" style="height:1.5rem"><span style="margin-right: 0.6rem;"></span>Material</h4>
+                <a style="height:2rem" href="{% url 'addCourseMaterial' course.code  %}">
+                    <img src="{% static 'images/icon/iconBlack.png' %}" alt="" height="32">
+                </a>
+            </div>
+            <hr>
+            <div class="add-announcement">
+                {% for material in materials %}
+
+                <!-- individual material starts -->
+                <div id="accordion">
+                    <div class="card mb-2">
+                        <div class="card-header bg-white border-3 p-2" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn custom-btn border-0 d-flex justify-content-between w-100" data-bs-toggle="collapse" data-bs-target="#collapseOne{{ material.id}}"
+                                    aria-expanded="true" aria-controls="collapseOne{{ material.id}}">
+                                    <div class="fs-6 text-break text-dark my-auto custom-text">{% autoescape off %}{{material.description}}{% endautoescape %} </div>
+                                    <span id="icon{{ material.id }}" class="material-icon">
+                                        <img src="{% static 'images/icon/folder.png' %}" alt="" style="height:1.5rem">
+                                    </span>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne{{ material.id}}" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                {% if material.file %}
+                                    {% if material.file.url %}
+                                        <a class="fw-bold play-video-btn" data-video-url="{{ material.file.url }}"
+                                            href="javascript:void(0);">
+                                            <span style="color:#9400d3" id="materialName">Fil : {{material.file.name}}</span>
+                                        </a><br>
+                                    {% else %}
+                                        <a class="fw-bold" href="{{ material.file.url }}">
+                                            <span style="color:#9400d3" id="materialName">File : {{material.file.name}}</span>
+                                        </a><br>
+                                    {% endif %}
+                                {% endif %}
+                                <div class="modal fade" id="materialDel{{material.id}}" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="materialBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="border:none">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body fs-6">
+                                                Are you sure you want to remove this item?
+                                            </div>
+                                            <div class="modal-footer" style="border:none">
+                                                <button type="button" class="btn btn-sm "
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <a class="btn btn-sm btn-primary"
+                                                    href="{% url 'deleteCourseMaterial' course.code material.id %}">Confirm</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row justify-content-between">
+                                    <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                        data-bs-target="#materialDel{{material.id}}" style="border:none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>
+                                        Remove
+                                    </button>
+                                    <div style="color:grey;">
+                                        {{material.post_date}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- individual material ends -->
+                {% empty %}
+                <h6 style="text-align:center">No materials given yet</h6>
+                {% endfor %}
+            </div>
+            <div class="text-center fs-6">
+                <p>Showing {{ materials.count}} of {{course.material_set.count}} {% if materials.count == 1 %} material {% else %}materials{% endif %}</p>
+            </div>
+        </div>
+        <!-- materials section ends -->
+    </div>
+</div>
+
+<!-- video modal  -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <video id="videoPlayer" playsinline controls class="w-100" autoplay>
+                    Your browser does not support the video tag.
+                </video>
+                <!-- <button id="skip-backward-btn">Skip Backward</button>
+                <button id="skip-forward-btn">Skip Forward</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('.collapse').removeClass('show');
+
+        $('.collapse:first').addClass('show');
+
+        $('.collapse').on('show.bs.collapse', function() {
+            var materialId = $(this).attr('id').replace('collapseOne', '');
+
+            $('#icon' + materialId).html('<img src="{% static "images/icon/open-book.png" %}" alt="" style="height:1.5rem">');
+        });
+
+        $('.collapse').on('hide.bs.collapse', function() {
+            var materialId = $(this).attr('id').replace('collapseOne', '');
+
+            $('#icon' + materialId).html('<img src="{% static "images/icon/folder.png" %}" alt="" style="height:1.5rem">');
+        });
+
+        $('.play-video-btn').on('click', function() {
+            var videoUrl = $(this).data('video-url');
+            var videoPlayer = $('#videoPlayer');
+            videoPlayer.attr('src', videoUrl);
+            videoPlayer[0].load(); 
+            $('#videoModal').modal('show'); 
+            
+            // Function to skip forward by 10 seconds
+            $('#skip-forward-btn').on('click', function() {
+                videoPlayer[0].currentTime += 10;
+            });
+    
+            // Function to skip backward by 10 seconds
+            $('#skip-backward-btn').on('click', function() {
+                videoPlayer[0].currentTime -= 10;
+            });
+        });
+
+        const player = new Plyr('#player', {
+            // Options (optional)
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
+            keyboard: { focused: true, global: true },
+            tooltips: { controls: true, seek: true },
+        });
+
+        // Event listener
+        player.on('play', event => {
+            console.log('Started playing');
+        });
+
+        // Control player using Plyr's API
+        $('.custom-play-button').on('click', function() {
+            player.play();
+        });
+
+
+
+    });
+
+</script>
+{% endblock %}

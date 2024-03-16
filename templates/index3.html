@@ -1,0 +1,425 @@
+
+{% extends 'base2.html' %}
+{% block title %}  Home {% endblock title %}
+{% load static %}
+{% load custom_filters %}
+{% block body %}
+
+
+        <section class="hero-section d-flex justify-content-center align-items-center pt-8" id="section_1">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8 col-12 mx-auto">
+                        <h1 class="text-white text-center">Skill up. And Stand out.</h1>
+
+                        <p class="text-center text-white">The latest tech knowledge. Expert instructors. Personalized
+                            feedback. Join our community of 17 million learners gaining project-based skills.</p>
+
+                        <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bi-search" id="basic-addon1">
+
+                                </span>
+
+                                <input name="keyword" type="search" class="form-control" id="keyword"
+                                    placeholder="Programming, Code, Marketing, Finance ..." aria-label="Search">
+
+                                <button type="submit" class="form-control">Search</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="featured-section">
+            <div class="container">
+                <div class="row mx-auto g-4 text-center">
+
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                            <!-- <a href="#"> -->
+                                <div>
+                                    <span class="badge bg-design rounded-pill ms-auto">3</span>
+                                    <div class="d-flex justify-content-center align-items-center flex-column">
+                                        <span class="bi-code display-1"></span>
+                                        <h5 class="mb-5">Programming languages</h5>
+                                    </div>
+                                </div>
+                            <!-- </a> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                            <!-- <a href="#"> -->
+                                <div>
+                                    <span class="badge bg-design rounded-pill ms-auto">0</span>
+                                    <div class="d-flex justify-content-center align-items-center flex-column">
+                                        <span class="bi-mortarboard display-1"></span>
+                                        <h5 class="mb-5">Education</h5>
+                                    </div>
+                                </div>
+                            <!-- </a> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                            <!-- <a href="#"> -->
+                                <div>
+                                    <span class="badge bg-design rounded-pill ms-auto">0</span>
+                                    <div class="d-flex justify-content-center align-items-center flex-column">
+                                        <span class="bi-shop display-1"></span>
+                                        <h5 class="mb-5">Marketing</h5>
+                                    </div>
+                                </div>
+                            <!-- </a> -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 text-center my-4">
+                        <h3 class="mb-4">Feature Courses</h3>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="language-tab-pane" role="tabpanel"
+                                aria-labelledby="language-tab" tabindex="0">
+                                <div class="row g-4">
+                                    {% for course in courses %}
+                                    <div class="col-lg-4 mb-5 mb-lg-0">
+                                        <div class="card lift h-100">
+                                            <a href="{% url 'faculty' course.code %}">
+                                                <img src="{{ course.image.url }}"
+                                                    alt="..." class="card-img-top" style="height: 200px;">
+                                            </a>
+                                            <div class="card-body">
+                                                <p class="mb-0 w-100 text-dark">{{ course.name }}
+                                                </p>
+
+                                                <div class="small text-gray-500">{{ course.faculty }}</div>
+                                                <div class="small text-gray-800 font-weight-200"
+                                                    style="font-size: 10px;">
+                                                    <i class="fas fa-star fill"></i>
+                                                    <i class="fas fa-star fill"></i>
+                                                    <i class="fas fa-star fill"></i>
+                                                    <i class="fas fa-star fill"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+
+                                                <p class="mb-0 font-weight-200 text-dark price"
+                                                    style="font-size: 15px;">₹{{ course.price }}</p>
+                                            </div>
+                                            <a href="{% url 'faculty' course.code %}" class="text-dark">
+                                                <div
+                                                    class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                                                    <div class="small text-gray-500">{{course.code}} + Learners Already
+                                                        Enrolled </div>
+                                                    <div class="small text-gray-500 lh-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px"
+                                                            height="24px" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round"
+                                                            class="feather feather-arrow-right">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="faq-section section-padding" id="section_4">
+            <div class="container">
+                <div class="row">
+                    <div class="clearfix"></div>
+
+                    <div class="col-lg-5 col-12">
+                        <img src="{% static 'images/about-img1.png' %}" class="img-fluid" alt="FAQs">
+                    </div>
+
+                    <div class="col-lg-6 col-12 m-auto">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    Empower Your Learning Journey
+                                </h2>
+
+                                <div>
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li><b>Personalized Learning:</b> Dive into a tailored educational adventure
+                                                where every lesson is crafted to match your goals, fostering mastery in
+                                                chosen subjects for your success.</li>
+                                            <li><b>Empower Your Future:</b> Experience an expertly designed curriculum
+                                                that empowers you to take charge of your learning journey, shaping a
+                                                confident and enthusiastic educational future.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section section-padding" id="section_4">
+            <div class="container">
+                <div class="row">
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-lg-6 col-12 m-auto">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    Curated High-Quality Curriculum
+                                </h2>
+
+                                <div id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Explore our meticulously curated high-quality curriculum, designed for optimal
+                                        learning outcomes and student success.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-12">
+                        <img src="{% static 'images/feel-img.png' %}" class="img-fluid" alt="FAQs">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <span>
+            <div class="svg-border-rounded text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
+                    fill="#80d0c7">
+                    <path d="M144.54,17.34H0V0H144.54ZM0,0S0,17,27.27,17S144.54,0,144.54,0"></path>
+                </svg>
+            </div>
+        </span>
+
+        <section class="timeline-section section-padding" id="section_3">
+            <div class="section-overlay"></div>
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 text-center">
+                        <h2 class="text-white mb-5">How does it work?</h1>
+                    </div>
+
+                    <div class="col-lg-10 col-12 mx-auto">
+                        <div class="timeline-container">
+                            <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+                                <div class="list-progress">
+                                    <div class="inner"></div>
+                                </div>
+
+                                <li>
+                                    <h4 class="text-white mb-3"> Discover Courses</h4>
+
+                                    <p class="text-white">Find top-quality courses in various fields, designed for depth
+                                        and relevance.
+                                    </p>
+
+                                    <div class="icon-holder">
+                                        <i class="bi-search"></i>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h4 class="text-white mb-3">Personalize Learning</h4>
+
+                                    <p class="text-white">Choose courses aligned with your goals, whether specific or
+                                        broad.</p>
+
+                                    <div class="icon-holder">
+                                        <i class="bi-bookmark"></i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h4 class="text-white mb-3">Engage Interactive Lessons</h4>
+
+                                    <p class="text-white">Dive into quizzes and discussions for practical learning.</p>
+
+                                    <div class="icon-holder">
+                                        <i class="bi-book"></i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h4 class="text-white mb-3">Get Expert Support</h4>
+
+                                    <p class="text-white">Receive guidance from experienced instructors, access
+                                        resources, and attend webinars.</p>
+
+                                    <div class="icon-holder">
+                                        <i class="bi-suit-heart"></i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h4 class="text-white mb-3">Track Progress</h4>
+
+                                    <p class="text-white">Monitor your journey, earn certifications for your
+                                        achievements.</p>
+
+                                    <div class="icon-holder">
+                                        <i class="bi-patch-check"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="faq-section section-padding" id="section_4">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-12">
+                        <h2 class="mb-4">Frequently Asked Questions</h2>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-lg-5 col-12">
+                        <img src="{% static 'images/faq.png' %}" class="img-fluid" alt="FAQs">
+                    </div>
+
+                    <div class="col-lg-6 col-12 m-auto">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        How do I enroll in a course?
+                                    </button>
+                                </h2>
+
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Sign up, choose your course, and with a simple click on "Enroll," gain instant
+                                        access to a world of knowledge.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Is technical support available?
+                                    </button>
+                                </h2>
+
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Absolutely! Reach out to our support team via email or chat 24/7 for any
+                                        technical assistance or course-related queries.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        How do I reset my password?
+                                    </button>
+                                </h2>
+
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Click "Forgot Password" on the login page, enter your email, and follow the link
+                                        sent to reset your password securely.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 text-center my-4">
+                        <h3 class="mb-4">Feature Blogs</h3>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="language-tab-pane" role="tabpanel"
+                                aria-labelledby="language-tab" tabindex="0">
+                                <div class="row g-4">
+                                    {% for blog in blogs %}
+                                    <div class="col-lg-4 mb-5 mb-lg-0">
+                                        <div class=" lift h-100">
+                                            <a href="{% url 'blog_details' post_slug=blog.slug %}" class="d-block">
+                                                <img src="{{ blog.image.url }}"
+                                                    alt="..." class="card-img-top" style="height: 200px;">
+                                            </a>
+                                            <div class="card-body p-2">
+                                                <a href="{% url 'blog_details' post_slug=blog.slug %}">
+                                                    <p class="mb-0 w-100 text-primary">{{ blog.title|truncate_html_words:8 }}</p>
+                                                </a>
+                                                <div class="justify-align">
+                                                    {{ blog.content|truncate_html_words:12|safe }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{% url 'blog' %}" class="text-center my-5">
+                        <button class="btn btn-outline-dark px-5 p-3">
+                            Explore More
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+{% endblock body %}

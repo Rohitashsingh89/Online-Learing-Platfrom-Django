@@ -1,0 +1,107 @@
+{% extends 'index.html' %}
+{% block title %} Courses | RS Learning {% endblock title %}
+{% block profile %}
+{% if faculty %} {% url 'profile' faculty.faculty_id %}
+{% else %} {% url 'profile' student.student_id %}
+{% endif %}
+{% endblock %}
+{% block user %}
+{% if faculty %} {{faculty.name}}
+{% else %} {{student.name}}
+{% endif %}
+{% endblock user %}
+{% block courses %}
+{% url 'myCourses' %}
+{% endblock courses %}
+{% block allCourses %}
+
+{% url 'courses' %}
+{% endblock %}
+{% block content %}
+<div class="container">
+   <!-- navigation links -->
+   <div class="container shadow-sm">
+      <nav
+         style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+         aria-label="breadcrumb">
+         <ol class="breadcrumb p-3">
+            <li class="breadcrumb-item active animate__animated animate__backInRight" aria-current="page">All courses
+            </li>
+         </ol>
+      </nav>
+   </div>
+   <!-- navigation links end -->
+   <div class="row gy-5">
+      {% if courses %}
+      <section class="py-10 bg-white">
+         <div class="container">
+            <div class="row">
+
+               {% for course in courses %}
+               <!-- individual card start -->
+
+               <div class="col-lg-4 mb-5 mb-lg-0" style="padding-bottom: 30px;">
+                  <div class="card lift h-100">
+                     <a href="{% url 'faculty' course.code %}">
+                        <img
+                           src="{{ course.image.url }}"
+                           alt="..." class="card-img-top" style="height: 200px;">
+                     </a>
+                     <div class="card-body">
+                        <p class="mb-0 w-100 font-weight-600 text-dark fw-bold">{{course.name}}</p>
+
+                        {% if course.faculty %}
+                        <p class="small text-gray-500"><i>By {{ course.faculty.name }}</i></p>
+                        {% else %}
+                        <p> Teacher not assigned</p>
+                        {% endif %}
+                        {% if not faculty %}
+                        {% comment %} if student {% endcomment %}
+                        {% if course not in enrolled %}
+                           <a href="{% url 'access' course.code %}" class="btn btn-outline-secondary"><span
+                           class="px-2">Access</span></a>
+                           {% else %}
+                           <a href="{% url 'course' course.code %}" class="btn btn-outline-secondary"><span
+                              class="px-3">Enter</span></a>
+                           {% endif %}
+                        {% endif %}
+                              <h3 class="mb-0 font-weight-600 text-dark price">₹{{ course.price }}</h3>
+                        <div class="small text-gray-800 font-weight-200" style="font-size: 10px;">
+                           <i class="fas fa-star fill"></i>
+                           <i class="fas fa-star fill"></i>
+                           <i class="fas fa-star fill"></i>
+                           <i class="fas fa-star fill"></i>
+                           <i class="fas fa-star"></i>
+                        </div>
+
+                     </div>
+                     <a href="{% url 'faculty' course.code %}" class="text-dark">
+                        <div
+                           class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                           <div class="small text-gray-500">{{studentCount|get_item:course.code}} + Learners Already Enrolled </div>
+                           <div class="small text-gray-500 lh-1">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-arrow-right">
+                                 <line x1="5" y1="12" x2="19" y2="12"></line>
+                                 <polyline points="12 5 19 12 12 19"></polyline>
+                              </svg>
+                           </div>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+
+               <!-- individual card ends -->
+               {% endfor %}
+
+
+            </div>
+         </div>
+      </section>
+   </div>
+   {% else %}
+   <div class="text-center h4 text-secondary">No courses to show</div>
+   {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'index.html' %}
+{% block title %}{{ q }} - RS Learning{% endblock title %}
+{% block profile %}
+{% if faculty  %} {% url 'profile' faculty.faculty_id %}
+{% else %}
+{% url 'profile' student.student_id %}
+{% endif %}
+{% endblock %}
+{% block user %}
+{% if faculty %} {{faculty.name}}
+{% else %} {{student.name}}
+{% endif %}
+{% endblock user %}
+{% block courses %}
+{% if faculty %} {% url 'facultyCourses' %}
+{% else %}
+{% url 'myCourses' %}
+{% endif %}
+{% endblock courses %}
+{% block departments %}
+{% url 'departments' %}
+{% endblock %}
+{% block allCourses %} {% url 'courses' %} {% endblock %}
+{% block content %}
+<div class="container">
+   {% if courses %}
+   <div class="fs-5 text-muted py-2">
+      Showing search results for <span class="text-primary">'{{ q }}'</span>
+   </div>
+   <div class="row gy-5">
+      {% for course in courses %}
+      <div class="col-lg-4 mb-5 mb-lg-0">
+         <div class="card">
+            <a href="">
+               <img src="{{ course.image.url }}" alt="..." class="card-img-top" style="height: 200px;">
+            </a>
+            <div class="card-body p-2">
+               <p class="mb-0 w-100 font-weight-600 text-dark fw-bold">{{course.name}}</p>
+               <p class="mb-0 w-100 font-weight-200 text-dark">{{course.faculty}}</p>
+               <p class="mb-0 w-100 font-weight-600 text-dark fw-bold">₹{{course.price}}</p>
+
+               {% if course not in enrolled %}
+               <a href="{% url 'access' course.code %}" class="btn btn-outline-dark"><span
+                  class="px-2">Access</span></a>
+               {% else %}
+               <a href="{% url 'course' course.code %}" class="btn btn-outline-dark"><span
+                  class="px-3">Enter</span></a>
+               {% endif %}
+               
+            </div>
+            
+            <a href="" class="text-dark">
+               <div class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                  <div class="small text-gray-500">{{studentCount|get_item:course.code}} + Learners Already
+                     Enrolled </div>
+                  <div class="small text-gray-500 lh-1">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-arrow-right">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                     </svg>
+                  </div>
+               </div>
+            </a>
+         </div>
+      </div>
+      
+      <!-- individual course ends -->
+      {% endfor %}
+   </div>
+   {% else %}
+   <div class="fs-5 text-center text-muted"><svg  style="vertical-align: text-bottom;" xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+      <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+    </svg> Could not find any results for <span
+      class="text-primary">'{{ q }}'</span></div>
+   {% endif %}
+</div>
+
+<script>
+   $(document).ready(function () {
+      $('h5').each(function () {
+         var html = $(this).html();
+         var regex = new RegExp('{{ q }}', 'gi');
+         var newHtml = html.replace(regex, '<span class="text-primary">' + '{{ q }}' + '</span>');
+         $(this).html(newHtml);
+      });
+   });
+</script>
+{% endblock  %}

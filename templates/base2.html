@@ -1,0 +1,188 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %} {% endblock title %} - RS Learning</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="{% static 'styles/home.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="top">
+    <main>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-mod shadow" style="min-height: 70px;">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-5 px-2 py-1" href="/" data-bs-toggle="tooltip"
+                    data-bs-placement="bottom" title="Access admin panel">RS Learning</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                    aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class=" navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active fw-bold" aria-current="page"
+                                href="{% url 'about' %}" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Course home page">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active fw-bold" aria-current="page"
+                                href="{% url 'contact' %}" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Course home page">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active fw-bold" href="{% url 'blog' %}"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Show all courses">Blogs</a>
+                        </li>
+                        {% if authorized  %}
+                        <li class="nav-item">
+                                <a class="nav-link active fw-bold" href="{% url 'std_logout' %}" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" title="Log out">Log out</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link active fw-bold" href="{% url 'std_login' %}" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" title="Log in">Log in</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <form class="d-flex" action=" {% url 'search' %}" method="GET">
+                        <input id="searchIn" class="form-control me-2 searchbar" type="search"
+                            placeholder="Search courses" aria-label="Search" name="q">
+                        <button id="searchBtn" class="btn btn-outline-dark" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        {% block body %}
+
+        {% endblock body %}
+
+        
+    <div id="layoutDefault_footer">
+        <span>
+            <div class="svg-border-rounded text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
+                    fill="currentColor">
+                    <path d="M144.54,17.34H0V0H144.54ZM0,0S21,17,20.27,17S144.54,0,144.54,0"></path>
+                </svg>
+            </div>
+        </span>
+
+        <footer id="layoutDefault_footer" class="footer pt-10 pb-5 mt-auto bg-light footer-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="footer-brand">RS Learning</div>
+                        <div class="mb-3">An Ultimate place for study</div>
+                        <div class="icon-list-social mb-5">
+                            <a href="javascript:void(0);" class="icon-list-social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="javascript:void(0);" class="icon-list-social-link">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="javascript:void(0);" class="icon-list-social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="javascript:void(0);" class="icon-list-social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                                <div class="text-uppercase-expanded text-xs mb-4">Pages</div>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><a href="javascript:void(0);">Home</a></li>
+                                    <li class="mb-2"><a href="javascript:void(0);">About</a></li>
+                                    <li class="mb-2"><a href="javascript:void(0);">contact</a></li>
+                                    <li class="mb-2"><a href="javascript:void(0);">Log in</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                                <div class="text-uppercase-expanded text-xs mb-4">Technical</div>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><a href="javascript:void(0);">Documentation</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                                <div class="text-uppercase-expanded text-xs mb-4">Includes</div>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><a href="javascript:void(0);">UserSection</a></li>
+                                    <li class="mb-2"><a href="javascript:void(0);">Faculty Section</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="text-uppercase-expanded text-xs mb-4">Legal</div>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><a href="javascript:void(0);">Privacy Policy</a></li>
+                                    <li class="mb-2"><a href="javascript:void(0);">Terms and Conditions</a></li>
+                                    <li><a href="javascript:void(0);">License</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-5">
+                <div class="row align-items-center">
+                    <div class="col-md-6 small">Copyright © RS Learning 2023</div>
+                    <div class="col-md-6 text-md-right small">
+                        <a href="javascript:void(0);">Privacy Policy · </a>
+                        <a href="javascript:void(0);">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        // Add a scroll event listener
+        $(window).scroll(function () {
+            // Check the scroll position
+            if ($(this).scrollTop() > 50) {
+                $('.navbar-mod').removeClass('scrolled');
+            } else {
+                $('.navbar-mod').addClass('scrolled');
+                $('.navbar-mod').addClass('bg-white');
+            }
+        });
+    });
+    </script>
+    
+
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+
+</body>
+
+</html>

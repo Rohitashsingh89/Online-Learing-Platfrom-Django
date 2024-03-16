@@ -1,0 +1,122 @@
+{% extends 'base2.html' %}
+{% block title %} Contact {% endblock title %}
+{% load static %}
+{% block body %}
+
+
+<section class="section section-concept section-no-border section-danger section-angled section-angled-reverse pt-2 m-0"
+    id="section-concept"
+    style="background-color: #80d0c7; background-size: cover; background-position: center; animation-duration: 750ms; animation-delay: 300ms; animation-fill-mode: forwards;">
+    <div class="section-angled-layer-bottom bg-light" style="padding: 0rem 0;"></div>
+    <div class="container-fluid">
+        <div class="page-header page-header-modern bg-color-dark-scale-1 page-header-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 align-self-center p-static order-2 text-center pb-3">
+                        <h1 class="text-light font-weight-bold text-8 py-5">Contact</h1>
+                    </div>
+    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding ection-bg">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12">
+                <h3 class="mb-4 pb-2">We'd love to hear from you</h3>
+            </div>
+
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <span {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</span>
+                <script>
+                    setTimeout(function () {
+                        document.querySelector('.alert').style.display = 'none';
+                    }, 8000);  
+                </script>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+            <div class="col-lg-6 col-12">
+                <form method="post" class="custom-form contact-form" role="form">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-floating">
+                                <input type="text" name="{{ form.name.name }}" id="{{ form.name.id_for_label }}" class="form-control" placeholder="Name"
+                                    required="">
+
+                                <label for="{{ form.name.id_for_label }}">Name</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-floating">
+                                <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" pattern="[^ @]*@[^ @]*" class="form-control"
+                                    placeholder="Email address" required="">
+
+                                <label for="{{ form.email.id_for_label }}">Email address</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-12">
+                            <div class="form-floating">
+                                <input type="text" name="{{ form.phone.name }}" id="{{ form.phone.id_for_label }}" class="form-control" placeholder="Name"
+                                    required="">
+
+                                <label for="{{ form.phone.id_for_label }}">Phone</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" name="{{ form.subject.name }}" id="{{ form.subject.id_for_label }}" class="form-control" placeholder="Name"
+                                    required="">
+
+                                <label for="{{ form.subject.id_for_label }}">Subject</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <textarea class="form-control" id="{{ form.message.id_for_label}}" name="{{ form.message.name }}"
+                                    placeholder="Tell me about the project"></textarea>
+
+                                <label for="{{ form.message.id_for_label }}">Tell me about the project</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-12 ms-auto">
+                            <button type="submit" class="form-control">Submit</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-5 col-12 mx-auto mt-5 mt-lg-0">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14158.157934348596!2d77.66345695214106!3d27.483592870981134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39737169f3b3fc97%3A0x6b0071a83164136!2sBSA%20college!5e0!3m2!1sen!2sin!4v1698641499870!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded"></iframe>
+                <h5 class="mt-4 mb-2">Online Learning Platform</h5>
+
+                <p>Mathura, India</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
