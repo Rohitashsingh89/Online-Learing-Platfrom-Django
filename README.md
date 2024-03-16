@@ -3,7 +3,7 @@
 A learning management and online assessment system for academic education.
 
 ###### Due to the large file size, the demo video exceeds Github's upload limit. Please access the video using the following link
-[![Alt text](https://img.youtube.com/vi/7WFa6E2Y3rdS3eRf/0.jpg)](https://youtu.be/5QumgqWzc60?si=7WFa6E2Y3rdS3eRf)
+[![Alt text](https://img.youtube.com/vi/5QumgqWzc60/0.jpg)](https://youtu.be/5QumgqWzc60?si=7WFa6E2Y3rdS3eRf)
 
 ## Features
 
